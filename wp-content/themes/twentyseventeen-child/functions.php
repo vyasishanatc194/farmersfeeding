@@ -260,3 +260,139 @@ function new_mail_from_name($old)
     $wpfrom = get_bloginfo( 'name' );
     return $wpfrom;
 }
+
+
+//ajax localise
+add_action('wp_enqueue_scripts', 'pw_load_scripts');
+function pw_load_scripts() {
+  wp_enqueue_script('pw-script', get_stylesheet_directory_uri() . '/assets/donation/js/donation.js','','',true);
+  wp_localize_script('pw-script', 'pw_script_vars', array(
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'siteurl' => get_stylesheet_directory_uri(),
+    'security' => wp_create_nonce('farmersfeeding'),
+  ) );
+}
+
+// action to save data in db
+add_action('wp_ajax_donate_now', 'donate_now');
+add_action('wp_ajax_nopriv_donate_now', 'donate_now');
+function donate_now() {
+	check_ajax_referer('farmersfeeding', 'security');
+	$insertdata = [];
+	$result = [];
+	// default response
+	$result['success'] = false;
+	$result['data'] = [
+		'message' => 'Network error.',
+	];
+	if ($_POST['card_number'] !== '' || $_POST['cvv'] !== '' || $_POST['expiry_date'] !== '') {
+		$result['success'] = false;
+		$result['data'] = [
+			'message' => 'Please enter calid card details.',
+		];
+	}
+	$action = $_POST['action'];
+	if ($action == 'donate_now') { // check for action name
+		$insertdata['full_name'] = $_POST['your_name'];
+		$insertdata['email_address'] = $_POST['email'];
+		$insertdata['amount'] = ($_POST['donation_amt'] == 'other') ? $_POST['entered_amt'] : $_POST['donation_amt'];
+		$insertdata['phone'] = $_POST['phone'];
+		$insertdata['contact_email_phone'] = $_POST['email_phone'];
+		$insertdata['deleted_at'] = null;
+		$insertdata['selected_option'] = $_POST['soption'];
+
+		//export month and year
+		$ExpDate = explode("/", $_POST['expiry_date']);
+		$month = $ExpDate[0];
+		$year = $ExpDate[1];
+
+		// Include Stripe PHP library
+		require_once('stripe/Stripe.php');		
+
+		$stripeDescription = get_option('stripe_description');
+		$stripeCurrency = get_option('stripe_currency');
+		// Set Publishable key
+		Stripe::setApiKey(get_option('publishable_key'));
+
+		// Stripe Create Token
+		$token = Stripe_Token::create([
+			'card' => [
+			  'number' => $_POST['card_number'],
+			  'exp_month' => $month,
+			  'exp_year' => $year,
+			  'cvc' => $_POST['cvv'],
+			],
+		]);
+
+		// Set Secret key
+		Stripe::setApiKey(get_option('secret_key'));
+		
+		$customer = Stripe_Customer::create(array(
+			'name' 			=> $_POST['your_name'],
+			'description' 	=> $stripeDescription,
+			'email' 		=> $_POST['email'],
+			'source'        => $token->id,
+			'address' 		=> ['city' => '', 'country' => 'United States', 'line1' => '27 Fairground St. Jamaica', 'line2' => '', 'postal_code' => '11435', 'state' => '']
+		)); 
+
+		// Unique order ID 
+		$orderID = strtoupper(str_replace('.','',uniqid('', true)));
+
+		try{
+			$itemPrice = ($insertdata['amount']*100);
+
+			// Charge a credit or a debit card 
+			$charge = Stripe_Charge::create(array( 
+				'customer' => $customer->id,
+				'amount'   => $itemPrice,
+				'currency' => $stripeCurrency,
+				'description' => $stripeDescription,
+				'metadata' => array(
+					'order_id' => $orderID
+				)
+			));		
+		} catch (\Exception $ex) {
+			print_r($ex);
+			$result['success'] = false;
+			$result['data'] = [
+				'message' => 'Something Error in transaction process.',
+				'data'	=> ''
+			];
+			wp_send_json_error( $result );
+		}
+		// Retrieve charge details 
+    	$chargeJson = $charge->jsonSerialize();
+		
+		// Check whether the charge is successful 
+		if ($chargeJson['amount_refunded'] == 0 && empty($chargeJson['failure_code']) && $chargeJson['paid'] == 1 && $chargeJson['captured'] == 1) {
+			// Order details 
+			$transactionID = $chargeJson['balance_transaction'];
+			$paidCurrency = $chargeJson['currency'];
+			$paidAmount = $chargeJson['amount'];
+			$insertdata['amount'] = $paidAmount/100;
+			$insertdata['stripe_transaction_id'] = $chargeJson['order_id'];
+			$insertdata['payment_status'] = $chargeJson['status'];
+
+			// insert record in database
+			global $wpdb;
+			$action = $wpdb->insert('wp_donations', $insertdata);
+			if($wpdb->last_query) {
+				$result['success'] = true;
+				$result['data'] = [
+					'message' => 'Thank You For Donating.',
+					'data' => $wpdb->insert_id
+				];
+				wp_send_json_success( $result );
+			} else {
+				$result['success'] = false;
+				$result['data'] = [
+					'message' => 'Something Error in insertion process.',
+					'data'	=> ''
+				];
+				wp_send_json_error( $result );
+			}
+		}
+	}
+	$result = json_encode($result);
+	echo $result;
+}
