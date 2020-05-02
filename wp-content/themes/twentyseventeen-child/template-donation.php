@@ -105,7 +105,7 @@ get_header();
                                         <div class="form-group">
                                             <label>Full Name *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter first name"  name="full_name" value="testtt">
+                                                <input type="text" class="form-control" placeholder="Enter first name"  name="full_name">
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +113,7 @@ get_header();
                                         <div class="form-group">
                                             <label>Email *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter your email address" name="email" value="testtt@gmail.com">
+                                                <input type="text" class="form-control" placeholder="Enter your email address" name="email">
                                             </div>
                                         </div>
                                     </div>						
@@ -121,23 +121,15 @@ get_header();
                                         <div class="form-group">
                                             <label>Phone number</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter your phone number" data-mask="0000000000" name="phone" value="1234567890">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-group">
-                                            <label>Address *</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter Address" name="address" value="27 Fairground St. Jamaica">
+                                                <input type="text" class="form-control" placeholder="Enter your phone number" data-mask="0000000000" name="phone">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>City *</label>
+                                            <label>Address *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter City" name="city" value="Jamaica">
+                                                <input type="text" class="form-control" placeholder="Enter Address" name="address">
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +137,7 @@ get_header();
                                         <div class="form-group">
                                             <label>Postal Code *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter Postal Code" name="postal_code" value="11435">
+                                                <input type="text" class="form-control" placeholder="Enter Postal Code" name="postal_code">
                                             </div>
                                         </div>
                                     </div>			
@@ -160,7 +152,7 @@ get_header();
                                         <div class="form-group">
                                             <label>Card Number *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter Card Number"  name="card_number" value="4242424242424242">
+                                                <input type="text" class="form-control" placeholder="Enter Card Number"  name="card_number">
                                             </div>
                                         </div>
                                     </div>
@@ -176,7 +168,7 @@ get_header();
                                         <div class="form-group">
                                             <label>CVV *</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Enter CVV" name="cvv" value="123">
+                                                <input type="text" class="form-control" placeholder="Enter CVV" name="cvv">
                                             </div>
                                         </div>
                                     </div>								
@@ -214,122 +206,9 @@ get_header();
 <script src="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/js/toastr.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/js/bootstrap-datepicker.js"></script>
 <link type="text/css" href="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/css/feather.min.css" media="all" rel="stylesheet" />
+<script src="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/js/custom.js"></script>
 
-<script>
-jQuery('.step-forms-nav-tab ul li a').click(function() { $(this).parent().addClass('active'); });
-jQuery('.expiry_date').datepicker({
-    format: 'mm/yyyy',
-    autoclose: true,
-    todayHighlight: true,
-    startDate: '+0m +0y',
-    endDate: '+10y',
-    viewMode: "months", 
-    minViewMode: "months"
-});
-jQuery(document).ready(function() {
-    
-    jQuery('input[name="donation_amt"]').on('change', function() {
-        var checkedValue = $(this).val();
-        jQuery('.other-donation-amt').val(checkedValue);
-        jQuery('#total-donation-amount').text('$'+checkedValue);
-        jQuery('.other-donation-amt').prop('disabled', true);
-        if (checkedValue == 'other') {
-            jQuery('.other-donation-amt').val();
-            jQuery('#total-donation-amount').text('$'+0);
-            jQuery('.other-donation-amt').prop('disabled', false);
-        }
-    });
-
-    $.validator.addMethod("phone",
-    function(value, element) {
-        return value.match(/^[0-9\s]*$/);
-    },
-    "Please enter a valid phone number.");
-    // jQuery start date end date validation
-    $.validator.addMethod("enddate", function(value, element) {
-        var startdatevalue = $('#date-picker01').val();
-        return Date.parse(startdatevalue) > Date.parse(value);
-    }, "Date of death should be greater than date of birth");
-    jQuery("#donation_form").validate({
-        rules: {
-            email: { 
-                required: true,
-                email: true,
-                maxlength: 200
-            },
-            full_name: { 
-                required: true,
-                maxlength: 200
-            },
-            phone: { 
-                required: true,
-                phone: true,
-                minlength: 8,
-                maxlength: 15
-            },
-            address: { 
-                required: true,
-                maxlength: 200
-            },
-            city: { 
-                required: true,
-                maxlength: 40
-            },
-            postal_code: { 
-                required: true,
-                maxlength: 8
-            },
-            entered_amt: {
-                required: true,
-            },
-            card_number: {
-                required: true,
-                maxlength: 16,
-                minlength: 16
-            },
-            expiry_date: {
-                required: true,
-            },
-            cvv: {
-                required: true,
-                maxlength: 3,
-                minlength: 3
-            }
-        },
-        messages: {
-            email: "Please enter a valid email address.",
-            full_name: "Please enter your name.",
-            phone: "Please enter phone number.",
-            address: "Please enter address.",
-            city: "Please enter address.",
-            postal_code: "Please enter address.",
-            card_number: {
-                required: "Please enter card number.",
-                maxlength: "Please enter valid card number.",
-                minlength: "Please enter valid card number."
-            },
-            expiry_date: {
-                required: "Please enter expiry date."
-            },
-            cvv: {
-                required: "Please enter cvv.",
-                maxlength: "Please enter valid cvv.",
-                minlength: "Please enter valid cvv."
-            }
-        },			   
-        errorPlacement: function(error, element) {
-            error.appendTo(element.parent().parent());
-            element.focus();
-        }
-    });
-
-    jQuery(document).ready(function () {
-        $('body').scrollTop($("#donation_form").offset().top);
-    });
-});
-</script>
 <script src="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/js/jquery-3.2.1.min.js" ></script>
-<!-- validation -->
 <script src="<?php echo get_stylesheet_directory_uri().'/donation'; ?>/js/jquery.validate.js"></script>
 <?php get_footer(); ?>
 

@@ -260,19 +260,17 @@ function new_mail_from_name($old)
 
 
 //ajax localise
-add_action('wp_enqueue_scripts', 'pw_load_scripts');
-function pw_load_scripts() {
-  wp_enqueue_script('pw-script', get_stylesheet_directory_uri() . '/donation/js/donation.js','','',true);
-  wp_localize_script('pw-script', 'pw_script_vars', array(
+function pw1_load_scripts() {
+  wp_enqueue_script('pw1-script', get_stylesheet_directory_uri() . '/donation/js/donation.js', array('jquery'));
+  wp_localize_script('pw1-script', 'pw1_script_vars', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'siteurl' => get_stylesheet_directory_uri(),
     'security' => wp_create_nonce('farmersfeeding'),
   ) );
 }
+add_action('wp_enqueue_scripts', 'pw1_load_scripts');
 
 // action to save data in db
-add_action('wp_ajax_donate_now', 'donate_now');
-add_action('wp_ajax_nopriv_donate_now', 'donate_now');
 function donate_now() {
 	check_ajax_referer('farmersfeeding', 'security');
 	$insertdata = [];
@@ -282,11 +280,19 @@ function donate_now() {
 	$result['data'] = [
 		'message' => 'Network error.',
 	];
-	if ($_POST['card_number'] !== '' || $_POST['cvv'] !== '' || $_POST['expiry_date'] !== '') {
+	if ($_POST['card_number'] == '' || $_POST['cvv'] == '' || $_POST['expiry_date'] == '') {
 		$result['success'] = false;
 		$result['data'] = [
-			'message' => 'Please enter calid card details.',
+			'message' => 'Please enter valid card details.',
 		];
+		wp_send_json_error( $result );
+	}
+	if (!isset($_POST['donation_amt']) || empty($_POST['donation_amt'])) {
+		$result['success'] = false;
+		$result['data'] = [
+			'message' => 'Please select amount.',
+		];
+		wp_send_json_error( $result );
 	}
 	$action = $_POST['action'];
 	if ($action == 'donate_now') { // check for action name
@@ -308,29 +314,48 @@ function donate_now() {
 
 		$stripeDescription = get_option('stripe_description');
 		$stripeCurrency = get_option('stripe_currency');
-		// Set Publishable key
-		Stripe::setApiKey(get_option('publishable_key'));
 
 		// Stripe Create Token
-		$token = Stripe_Token::create([
-			'card' => [
-			  'number' => $_POST['card_number'],
-			  'exp_month' => $month,
-			  'exp_year' => $year,
-			  'cvc' => $_POST['cvv'],
-			],
-		]);
+		try{
+			// Set Publishable key
+			Stripe::setApiKey(get_option('publishable_key'));
+			$token = Stripe_Token::create([
+				'card' => [
+				'number' => $_POST['card_number'],
+				'exp_month' => $month,
+				'exp_year' => $year,
+				'cvc' => $_POST['cvv'],
+				],
+			]);
+		} catch (\Exception $ex) {
+			$result['success'] = false;
+			$result['data'] = [
+				'message' => 'Something Error during transaction process.',
+				'data'	=> 'Stripe_Token'
+			];
+			wp_send_json_error( $result );
+			print_r($ex);
+		}
 
 		// Set Secret key
 		Stripe::setApiKey(get_option('secret_key'));
-		
-		$customer = Stripe_Customer::create(array(
-			'name' 			=> $_POST['your_name'],
-			'description' 	=> $stripeDescription,
-			'email' 		=> $_POST['email'],
-			'source'        => $token->id,
-			'address' 		=> ['city' => $_POST['city'], 'country' => 'United States', 'line1' => $_POST['address'], 'line2' => '', 'postal_code' => $_POST['email'], 'state' => '']
-		)); 
+		try{
+			$customer = Stripe_Customer::create(array(
+				'name' 			=> $_POST['your_name'],
+				'description' 	=> $stripeDescription,
+				'email' 		=> $_POST['email'],
+				'source'        => $token->id,
+				'address' 		=> ['city' => '', 'country' => 'United States', 'line1' => $_POST['address'], 'line2' => '', 'postal_code' => $_POST['postal_code'], 'state' => '']
+			)); 
+		} catch (\Exception $ex) {
+			$result['success'] = false;
+			$result['data'] = [
+				'message' => 'Something Error during transaction process.',
+				'data'	=> 'Stripe_Customer'
+			];
+			wp_send_json_error( $result );
+			print_r($ex);
+		}
 
 		// Unique order ID 
 		$orderID = strtoupper(str_replace('.','',uniqid('', true)));
@@ -349,13 +374,13 @@ function donate_now() {
 				)
 			));		
 		} catch (\Exception $ex) {
-			print_r($ex);
 			$result['success'] = false;
 			$result['data'] = [
-				'message' => 'Something Error in transaction process.',
-				'data'	=> ''
+				'message' => 'Something Error during transaction process.',
+				'data'	=> 'Stripe_Charge'
 			];
 			wp_send_json_error( $result );
+			print_r($ex);
 		}
 		// Retrieve charge details 
     	$chargeJson = $charge->jsonSerialize();
@@ -383,7 +408,7 @@ function donate_now() {
 			} else {
 				$result['success'] = false;
 				$result['data'] = [
-					'message' => 'Something Error in insertion process.',
+					'message' => 'Something Error during insertion process.',
 					'data'	=> ''
 				];
 				wp_send_json_error( $result );
@@ -392,5 +417,6 @@ function donate_now() {
 	}
 	$result = json_encode($result);
 	echo $result;
-	wp_die();
 }
+add_action('wp_ajax_donate_now', 'donate_now');
+add_action('wp_ajax_nopriv_donate_now', 'donate_now');
