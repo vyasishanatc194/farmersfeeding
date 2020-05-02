@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Contect Us Template
+ * Template Name: Form Template
  */
 $page = get_post(get_the_ID());
 get_header(); ?>
@@ -59,4 +59,17 @@ get_header(); ?>
     </section><!-- end of cremations top -->
 <?php } ?>
 
+<?php if($page->map_iframe !== '') {?>
+    <section class="map-section">
+        <div class="map-div">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p0">
+                    <?php echo do_shortcode($page->map_iframe); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>		
+<?php } ?>
 <?php get_footer(); ?>
