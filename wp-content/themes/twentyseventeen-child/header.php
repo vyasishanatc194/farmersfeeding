@@ -51,7 +51,7 @@ $homePage = get_post(5);
 										$custom_logo_id = get_theme_mod('custom_logo');                    
 										$image = wp_get_attachment_image_src($custom_logo_id, 'full');                          
 										if (has_custom_logo()) {                    	
-											_e('<img src="' . $image[0] . '" class="img-fluid logo_img scroll-logo" alt="logo">');                    
+											_e('<img src="' . $image[0] . '" class="img-fluid logo_img" alt="logo">');                    
 										} else {                    	
 											_e('<span class="site-name">' . esc_attr(get_bloginfo('name')) . '</span>');                    
 										}                 
@@ -107,7 +107,7 @@ $homePage = get_post(5);
 					<div class="main-banner-div">
 						<div class="video-banner-div">
 							<div class="embed-responsive embed-responsive-16by9">
-								<?php //echo $bannerpage->banner_iframe; ?>
+								<?php echo $bannerpage->banner_iframe; ?>
 							</div>
 						</div>
 						<div class="banner-content-div">

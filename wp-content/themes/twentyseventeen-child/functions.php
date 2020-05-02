@@ -125,10 +125,10 @@ function display_footer_content_1_element()
     <?php
 }
 
-function display_footer_content_2_element()
+function display_brought_text_element()
 {
     ?>
-    <textarea type="text" class="col-12-fields" name="footer_content_2" id="footer_content_2" Placeholder="Footer content 2"><?php echo get_option('footer_content_2'); ?></textarea>
+    <textarea type="text" class="col-12-fields" name="brought_text" id="brought_text" Placeholder="Brought Text"><?php echo get_option('brought_text'); ?></textarea>
 
     <?php
 }
@@ -183,7 +183,7 @@ function display_theme_panel_fields()
     add_settings_field("twitter_url", "Twitter Profile Url", "display_twitter_element", "theme-options", "section");
     add_settings_field("copy_right_content", "Copy Right content", "display_copy_right_content_element", "theme-options", "section");
     add_settings_field("footer_content_1", "Footer content 1", "display_footer_content_1_element", "theme-options", "section");
-    add_settings_field("footer_content_2", "Footer content 2", "display_footer_content_2_element", "theme-options", "section");
+    add_settings_field("brought_text", "Brought Text", "display_brought_text_element", "theme-options", "section");
     add_settings_field("secret_key", "Secret Key", "display_secret_key_element", "theme-options", "section");
 	add_settings_field("publishable_key", "Publishable Key", "display_publishable_key_element", "theme-options", "section");
 	add_settings_field("stripe_description", "Stripe Description", "display_stripe_description_element", "theme-options", "section");
@@ -203,7 +203,7 @@ function display_theme_panel_fields()
     register_setting("section", "twitter_url");
     register_setting("section", "copy_right_content");
     register_setting("section", "footer_content_1");
-    register_setting("section", "footer_content_2");
+    register_setting("section", "brought_text");
     register_setting("section", "secret_key");
 	register_setting("section", "publishable_key");
 	register_setting("section", "stripe_description");
