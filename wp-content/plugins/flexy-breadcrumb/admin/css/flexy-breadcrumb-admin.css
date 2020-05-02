@@ -7,7 +7,7 @@
  */
 @charset "UTF-8";
 
-.loading-div {
+.fbc-wrap .loading-div {
     position: fixed;
     background: rgba(0, 0, 0, 0.5);
     right: 0;
@@ -17,7 +17,7 @@
     z-index: 10;
     display: none;
 }
-.loading {
+.fbc-wrap .loading {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -29,54 +29,54 @@
 /*
 * Main Section 
 */
-ul.form-elements {
+.fbc-wrap ul.form-elements {
     float: left;
     width: 100%;
     margin: 0;
     box-shadow: 0px 1px rgba(208, 200, 200, 0.5);
 }
-ul.form-elements:last-child {
+.fbc-wrap ul.form-elements:last-child {
     box-shadow: none;
 }
-.form-elements li.to-field {
+.fbc-wrap .form-elements li.to-field {
     width: 100%;
     float: left;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-elements li.to-label {
+.fbc-wrap .form-elements li.to-label {
     float: left;
     width: 40%;
     padding: 0 0 0 30px;
 }
-.form-elements select {
+.fbc-wrap .form-elements select {
     max-width: 300px;
     width: 100%;
     height: 35px;
 }
-.form-elements textarea {
+.fbc-wrap .form-elements textarea {
     height: 150px;
     width: 300px;
     background: rgba(217, 217, 217, 0.2);
 }
-li.field-label {
+.fbc-wrap li.field-label {
     width: 30%;
     padding: 7px 0 0 30px;
     float: left;
     margin: 10px 0;
 }
-.full-width {
+.fbc-wrap .full-width {
     width: 100% !important;
     margin: 10px 0 0px !important;
 }
-li.element-field input[type="text"],
-input[type="time"],
-input[type="url"],
-input[type="week"],
-select,
-input[type="email"],
-input[type="tel"] {
+.fbc-wrap li.element-field input[type="text"],
+.fbc-wrap input[type="time"],
+.fbc-wrap input[type="url"],
+.fbc-wrap input[type="week"],
+.fbc-wrap select,
+.fbc-wrap input[type="email"],
+.fbc-wrap input[type="tel"] {
     border: 1px solid #ddd;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
@@ -89,54 +89,54 @@ input[type="tel"] {
     transition: 0.05s border-color ease-in-out;
 }
 @media (max-width: 460px){
-    li.element-field input[type="text"],
-    input[type="time"],
-    input[type="url"],
-    input[type="week"],
-    select,
-    input[type="email"],
-    input[type="tel"] {
+    .fbc-wrap li.element-field input[type="text"],
+    .fbc-wrap input[type="time"],
+    .fbc-wrap input[type="url"],
+    .fbc-wrap input[type="week"],
+    .fbc-wrap select,
+    .fbc-wrap input[type="email"],
+    .fbc-wrap input[type="tel"] {
         width: 100%;
     }
 }
-li.element-field input[type="email"]:focus,
-li.element-field input[type="password"]:focus,
-li.element-field select:focus,
-li.element-field textarea:focus {
+.fbc-wrap li.element-field input[type="email"]:focus,
+.fbc-wrap li.element-field input[type="password"]:focus,
+.fbc-wrap li.element-field select:focus,
+.fbc-wrap li.element-field textarea:focus {
     border: #8ce196 solid 1px;
     box-shadow: 0px 0px 1px #8ce196;
 }
-li.element-field {
+.fbc-wrap li.element-field {
     float: left;
     width: 55%;
     margin: 10px 0;
     text-align: left;
 }
-li.element-field > label {
+.fbc-wrap li.element-field > label {
     display: block;
     font-size: 11px;
     font-style: italic; 
 }
-ul.sub-menu li.logo {
+.fbc-wrap ul.sub-menu li.logo {
     text-align: center;
     background: #262424;
 }
-ul.sub-menu li.logo img {
+.fbc-wrap ul.sub-menu li.logo img {
     width: 100%;
 }
-ul.sub-menu li.logo:hover {
+.fbc-wrap ul.sub-menu li.logo:hover {
     background: #262424;
 }
-li.to-field label.to-label {
+.fbc-wrap li.to-field label.to-label {
     padding: 4px 10px 0px 30px;
     width: 40%;
     float: left;
     position: relative;
 }
-.clear {
+.fbc-wrap .clear {
     clear: both;
 }
-.success-msg {
+.fbc-wrap .success-msg {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -152,7 +152,7 @@ li.to-field label.to-label {
     display: none;
     color: #000;
 }
-.error-msg {
+.fbc-wrap .error-msg {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -187,62 +187,62 @@ li.to-field label.to-label {
 
 
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
-    li.field-label {
+    .fbc-wrap li.field-label {
         box-sizing: border-box;
         padding: 7px 20px 0;
         width: 100%;
     }
-    li.element-field {
+    .fbc-wrap li.element-field {
         box-sizing: border-box;
         padding: 0 20px;
         width: 100%;
     }
 }
 @media only screen and (min-width: 783px) and (max-width: 1023px) {
-    li.field-label {
+    .fbc-wrap li.field-label {
         box-sizing: border-box;
         padding: 7px 20px 0;
         width: 100%;
     }
-    li.element-field {
+    .fbc-wrap li.element-field {
         box-sizing: border-box;
         padding: 0 20px;
         width: 100%;
     }
 }
 @media only screen and (min-width: 480px) and (max-width: 782px) {
-    .main-nav ul.sub-menu {
+    .fbc-wrap .main-nav ul.sub-menu {
         margin: 0;
     }
-    li.field-label {
+    .fbc-wrap li.field-label {
         box-sizing: border-box;
         padding: 7px 20px 0;
         width: 100%;
     }
-    li.element-field {
+    .fbc-wrap li.element-field {
         box-sizing: border-box;
         padding: 0 20px;
         width: 100%;
     }
 }
 @media only screen and (min-width: 320px) and (max-width: 479px) {
-    .main-nav ul.sub-menu {
+    .fbc-wrap .main-nav ul.sub-menu {
         margin: 0;
     }
-    .theme-header {
+    .fbc-wrap .theme-header {
         height: 115px;
     }
-    li.field-label {
+    .fbc-wrap li.field-label {
         box-sizing: border-box;
         padding: 7px 20px 0;
         width: 100%;
     }
-    li.element-field {
+    .fbc-wrap li.element-field {
         box-sizing: border-box;
         padding: 0 20px;
         width: 100%;
     }
-    li.element-field .wp-picker-container {
+    .fbc-wrap li.element-field .wp-picker-container {
         margin-bottom: 10px;
         width: 100%;
     }
@@ -447,7 +447,7 @@ body {
     color: #333333;
     background-color: #ffffff;
 }
-span.add-on {
+.fbc-wrap span.add-on {
     width: auto;
     display: inline-block;
     min-width: 16px;

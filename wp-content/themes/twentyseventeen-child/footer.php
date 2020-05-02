@@ -80,9 +80,6 @@
 
 <?php wp_footer(); ?>
 
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/jquery-3.3.1.slim.min.js" ></script>
-<!-- validation -->
-<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/popper.min.js" ></script>
 <script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/bootstrap.min.js"></script>
 <script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/waves.js"></script>

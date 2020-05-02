@@ -1,19 +1,18 @@
 === Flexy Breadcrumb ===
 Contributors: PressTigers
-Donate link: http://www.presstigers.com
+Donate link: https://www.presstigers.com
 Tags: breadcrumb, breadcrumbs, navigation, menu, link, page link, navigate
 Requires at least: 4.6
-Tested up to: 5.2.1
-Requires PHP: 5.6
-Stable tag: 1.1.0
+Tested up to: 5.4
+Requires PHP: 7.0
+Stable tag: 1.1.2
 License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
- 
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+
 Flexy Breadcrumb is a super light weight plugin that is easy to navigate through current page hierarchy.
- 
+
 == Description ==
- 
-Flexy Breadcrumb by <a href="http://www.presstigers.com">PressTigers</a> is one of the simple and robust breadcrumb menu system available for the WordPress site. By using this plugin, you can display breadcrumb navigation anywhere in your website via [flexy_breadcrumb] shortcode.
+Flexy Breadcrumb by <a href="https://www.presstigers.com">PressTigers</a> is one of the simple and robust breadcrumb menu system available for the WordPress site. By using this plugin, you can display breadcrumb navigation anywhere in your website via [flexy_breadcrumb] shortcode.
 With the help of this plugin you can style and format the text, links and separators of breadcrumbs according to your own taste.
 
 = Plugin Features =
@@ -30,6 +29,9 @@ With the help of this plugin you can style and format the text, links and separa
 = Shortcode =
 ` [flexy_breadcrumb] `
 
+= Submit Patches =
+If you’ve identified a bug and have a fix, we’d welcome it at our [GitHub page](https://github.com/presstigers/flexy-breadcrumb/) for Flexy Breadcrumb. Simply submit a pull request so we can review and merge into the codebase if appropriate from there. Happy coding!
+
 == Installation ==
 
 1. Upload flexy-breadcrumb.zip to the /wp-content/plugins/ directory to your web server.
@@ -42,7 +44,6 @@ With the help of this plugin you can style and format the text, links and separa
 There are several methods but in general, you need to add the following line of code to your theme. This goes somewhere near the bottom of your theme's header.php template. However, you can add it anywhere you want in your theme, and it'll work.
 
 `<?php echo do_shortcode( '[flexy_breadcrumb]'); ?>`
-
 
 == Screenshots ==
  
@@ -58,6 +59,14 @@ There are several methods but in general, you need to add the following line of 
 1. Font Awesome Icon Picker(https://github.com/itsjavi/fontawesome-iconpicker)
  
 == Changelog ==
+
+= 1.1.2 =
+* Fix - Resolved errors of breadcrumb trail with Google Search Console.
+
+= 1.1.1 =
+* Fix - Added slash at the end of the URL - Google Recommendation
+* Fix - Wrapping the admin style to avoid from any style conflict.
+* Tweak - Update the schema links to https.
 
 = 1.1.0 =
 * Feature - Added breadcrumb trail for default posts page.
@@ -82,5 +91,5 @@ WP 4.9 Compatibility – Resolved the color picker issue in settings’s typogra
 * Initial release
 
 == Upgrade Notice ==
-= 1.1.0 =
-1.1.0 is a major release with default posts page trail, having highest category on post detail page and some breadcrumb schema fixes.
+= 1.1.1 =
+1.1.1 is a minor release with the fix of breadcrumb trail erros with Google Search Console.

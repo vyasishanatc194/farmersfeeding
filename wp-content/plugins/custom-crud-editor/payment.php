@@ -1,7 +1,7 @@
 <?php 
 // Include configuration file  
-include_once($_SERVER['DOCUMENT_ROOT'].'/farming/wp-config.php' ); 
-include_once($_SERVER['DOCUMENT_ROOT'].'/farming/wp-load.php' ); 
+include_once($_SERVER['DOCUMENT_ROOT'].'/wp-config.php' ); 
+include_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php' ); 
 //print_r($_POST); die; 
 $payment_id = $statusMsg = ''; 
 $ordStatus = 'error'; 

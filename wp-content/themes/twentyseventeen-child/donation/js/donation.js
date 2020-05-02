@@ -1,11 +1,13 @@
-jQuery(document).on('click','.save_button',function() {
-    if(jQuery('#donation_form').valid()) {
-        var btnText = jQuery('.save_button');
+jQuery(document).on('click','.do_payment',function() {
+    // if(jQuery('#donation_form').valid()) {
+
+        var btnText = jQuery('.do_payment');
         btnText.prop('disabled', true);
         btnText.val('Loading...');
         var formData = jQuery("#donation_form").serialize();
+        console.log(formData);
         jQuery.ajax({
-            type:"POST", 
+            type: "POST", 
             url: pw_script_vars.ajaxurl,
             dataType: "json",
             data: 'action=donate_now&security='+pw_script_vars.security+'&'+formData,
@@ -26,5 +28,6 @@ jQuery(document).on('click','.save_button',function() {
             },
             complate: function() {}
         });
-    }
+
+    // }
 });

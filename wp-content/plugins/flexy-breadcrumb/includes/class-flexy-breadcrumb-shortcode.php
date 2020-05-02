@@ -59,7 +59,7 @@ class Flexy_Breadcrumb_Shortcode {
 				<div class="fbc-wrap">
 
 					<!-- Ordered list-->
-					<ol class="fbc-items" itemscope itemtype="<?php echo esc_url( "http://schema.org/BreadcrumbList" ); ?>">
+					<ol class="fbc-items" itemscope itemtype="<?php echo esc_url( "https://schema.org/BreadcrumbList" ); ?>">
 						<?php
 						// Breadcrumb Trail Class Object
 						$fbcObj = new Flexy_Breadcrumb_Trail();

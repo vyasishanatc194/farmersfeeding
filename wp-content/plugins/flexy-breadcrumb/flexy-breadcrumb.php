@@ -15,7 +15,7 @@
  * Plugin Name:       Flexy Breadcrumb
  * Plugin URI:        https://wordpress.org/plugins/flexy-breadcrumb
  * Description:       Flexy Breadcrumb is a super light weight & easy to navigate through current page hierarchy.
- * Version:           1.1.0
+ * Version:           1.1.2
  * Author:            PressTigers
  * Author URI:        http://presstigers.com
  * License:           GPL-3.0+

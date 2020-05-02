@@ -7,7 +7,7 @@
  * - General Options
  * - Typography Options
  *
- * @link       http://presstigers.com
+ * @link       https://presstigers.com
  * @since      1.0.0
  *
  * @package     Flexy_Breadcrumb

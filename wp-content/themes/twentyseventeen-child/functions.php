@@ -73,6 +73,11 @@ function theme_settings_page()
             ?>
 	    </form>
 		</div>
+		<style>
+			.col-12-fields {
+				width: 80%;
+			}
+		</style>
         <?php
 }
 
@@ -145,32 +150,28 @@ function display_stripe_description_element() { ?>
     <input type="text"  class="col-12-fields"name="stripe_description" id="stripe_description" Placeholder="Stripe Description" value="<?php echo get_option('stripe_description'); ?>" />
 <?php }
 
-function display_stripe_amount_element() { ?>
-    <input type="text"  class="col-12-fields"name="stripe_amount" id="stripe_amount" Placeholder="Stripe Amount" value="<?php echo get_option('stripe_amount'); ?>" />
-<?php }
-
 function display_stripe_currency_element() { ?>
     <input type="text"  class="col-12-fields"name="stripe_currency" id="stripe_currency" Placeholder="Stripe Currency" value="<?php echo get_option('stripe_currency'); ?>" />
 <?php }
 
 function display_send_mail_to_subject_element() { ?>
-	<u>Mail To User</u>
+	<u>Mail To User</u><br/>
     <input type="text" maxlength="150" class="col-12-fields" name="send_mail_to_subject" id="send_mail_to_subject" Placeholder="Enter Subject" value="<?php echo get_option('send_mail_to_subject'); ?>" />
 <?php }
 function display_send_mail_to_body_element() { ?>
-	<textarea class="col-12-fields" name="send_mail_to_body" id="send_mail_to_body" Placeholder="Enter Body Message"><?php echo get_option('send_mail_to_body'); ?></textarea>
+	<textarea class="col-12-fields" name="send_mail_to_body" id="send_mail_to_body" rows="12" Placeholder="Enter Body Message"><?php echo get_option('send_mail_to_body'); ?></textarea>
 <?php }
 
 
 function display_send_mail_to_admin_element() { ?>
-	<u>Mail To Admin</u>
+	<u>Mail To Admin</u><br/>
     <input type="email"  class="col-12-fields" name="send_mail_to_admin" id="send_mail_to_admin" Placeholder="Enter Email Address" value="<?php echo get_option('send_mail_to_admin'); ?>" />
 <?php }
 function display_send_mail_to_admin_subject_element() { ?>
     <input type="text" maxlength="150" class="col-12-fields" name="send_mail_to_admin_subject" id="send_mail_to_admin_subject" Placeholder="Enter Subject" value="<?php echo get_option('send_mail_to_admin_subject'); ?>" />
 <?php }
 function display_send_mail_to_admin_body_element() { ?>
-	<textarea class="col-12-fields" name="send_mail_to_admin_body" id="send_mail_to_admin_body" Placeholder="Enter Body Message"><?php echo get_option('send_mail_to_admin_body'); ?></textarea>
+	<textarea class="col-12-fields" name="send_mail_to_admin_body" id="send_mail_to_admin_body" rows="12" Placeholder="Enter Body Message"><?php echo get_option('send_mail_to_admin_body'); ?></textarea>
 <?php }
 
 
@@ -187,7 +188,6 @@ function display_theme_panel_fields()
     add_settings_field("secret_key", "Secret Key", "display_secret_key_element", "theme-options", "section");
 	add_settings_field("publishable_key", "Publishable Key", "display_publishable_key_element", "theme-options", "section");
 	add_settings_field("stripe_description", "Stripe Description", "display_stripe_description_element", "theme-options", "section");
-	add_settings_field("stripe_amount", "Stripe Amount", "display_stripe_amount_element", "theme-options", "section");
 	add_settings_field("stripe_currency", "Stripe Currency", "display_stripe_currency_element", "theme-options", "section");
 
 	add_settings_field("send_mail_to_subject", "Subject", "display_send_mail_to_subject_element", "theme-options", "section");
@@ -207,7 +207,6 @@ function display_theme_panel_fields()
     register_setting("section", "secret_key");
 	register_setting("section", "publishable_key");
 	register_setting("section", "stripe_description");
-	register_setting("section", "stripe_amount");
 	register_setting("section", "stripe_currency");
 	
 	register_setting("section", "send_mail_to_subject");
@@ -223,8 +222,6 @@ function admin_style()
     wp_enqueue_style('admin-styles', get_bloginfo('template_url') . "/assets/css/admin.css");
 }
 add_action('admin_enqueue_scripts', 'admin_style');
-
-
 
 
 function wpautop2( $pee, $br = true ) {
@@ -265,7 +262,7 @@ function new_mail_from_name($old)
 //ajax localise
 add_action('wp_enqueue_scripts', 'pw_load_scripts');
 function pw_load_scripts() {
-  wp_enqueue_script('pw-script', get_stylesheet_directory_uri() . '/assets/donation/js/donation.js','','',true);
+  wp_enqueue_script('pw-script', get_stylesheet_directory_uri() . '/donation/js/donation.js','','',true);
   wp_localize_script('pw-script', 'pw_script_vars', array(
     'ajaxurl' => admin_url('admin-ajax.php'),
     'siteurl' => get_stylesheet_directory_uri(),
@@ -332,7 +329,7 @@ function donate_now() {
 			'description' 	=> $stripeDescription,
 			'email' 		=> $_POST['email'],
 			'source'        => $token->id,
-			'address' 		=> ['city' => '', 'country' => 'United States', 'line1' => '27 Fairground St. Jamaica', 'line2' => '', 'postal_code' => '11435', 'state' => '']
+			'address' 		=> ['city' => $_POST['city'], 'country' => 'United States', 'line1' => $_POST['address'], 'line2' => '', 'postal_code' => $_POST['email'], 'state' => '']
 		)); 
 
 		// Unique order ID 
@@ -372,7 +369,7 @@ function donate_now() {
 			$insertdata['amount'] = $paidAmount/100;
 			$insertdata['stripe_transaction_id'] = $chargeJson['order_id'];
 			$insertdata['payment_status'] = $chargeJson['status'];
-
+			// print_r($insertdata);
 			// insert record in database
 			global $wpdb;
 			$action = $wpdb->insert('wp_donations', $insertdata);
@@ -395,4 +392,5 @@ function donate_now() {
 	}
 	$result = json_encode($result);
 	echo $result;
+	wp_die();
 }

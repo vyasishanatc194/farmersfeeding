@@ -56,7 +56,7 @@ class Flexy_Breadcrumb {
     public function __construct() {
 
         $this->plugin_name = 'flexy-breadcrumb';
-        $this->version = '1.1.0';
+        $this->version = '1.1.2';
 
         $this->load_dependencies();
         $this->set_locale();

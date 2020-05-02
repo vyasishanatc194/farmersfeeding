@@ -107,7 +107,7 @@ class Flexy_Breadcrumb_Admin {
         );
 
         if ( is_admin() && ( in_array( $screen->id, apply_filters('fbc_pages', $fbc_pages) ) ) ) {
-            $text = '<a href=' . esc_url( "http://www.presstigers.com/") . ' target="_blank"><img src="' . plugin_dir_url(__FILE__) . '/images/powerByIcon.png" alt="Powered by PressTigers"></a>';
+            $text = '<a href=' . esc_url( "https://www.presstigers.com/") . ' target="_blank"><img src="' . plugin_dir_url(__FILE__) . '/images/powerByIcon.png" alt="Powered by PressTigers"></a>';
         }
         return $text;
     }
