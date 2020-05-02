@@ -15,33 +15,25 @@
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js no-svg">
 <head>
-<?php wp_head(); ?>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="profile" href="http://gmpg.org/xfn/11">
 <meta name="description" content="" />
 <meta name="author" content="" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title><?php wp_title(' | ', 'echo', 'right'); ?><?php bloginfo('name'); ?></title>
 <meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name='viewport' />
 <meta content='yes' name='apple-mobile-web-app-capable'>
 <meta content='translucent-black' name='apple-mobile-web-app-status-bar-style'>
-<link href='<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/images/favicon.png' rel='shortcut icon'>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/animate.min.css" media="all" rel="stylesheet" type="text/css" />
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/style.css" media="all" rel="stylesheet" type="text/css" />
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/dev.css" media="all" rel="stylesheet" type="text/css" />
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/waves.css" media="all" rel="stylesheet" type="text/css" />
-<link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/flaticon.css" media="all" rel="stylesheet" type="text/css" />
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.js"></script>
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/animate.min.css" media="all" rel="stylesheet" type="text/css" />
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/style.css" media="all" rel="stylesheet" type="text/css" />
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/waves.css" media="all" rel="stylesheet" type="text/css" />
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/flaticon.css" media="all" rel="stylesheet" type="text/css" />
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/modernizr.js"></script>
+<link href="<?php echo get_stylesheet_directory_uri(); ?>/css/custom.css" media="all" rel="stylesheet" type="text/css" />
+<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJWGB53" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-<?php wp_body_open(); ?>
-
 <?php
 $homePage = get_post(5);
 ?>
@@ -53,10 +45,17 @@ $homePage = get_post(5);
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12 col-lg-12">
-							<div class="logo-div">
-                                <?php the_custom_logo(); ?>
-								<a class="logo_link scroll-logo-div clearfix" href="<?php echo site_url(); ?>">
-									<img src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/images/logo2.png" class="img-fluid logo_img scroll-logo" alt="logo" />
+							<div class="logo-div">								
+								<a href="<?php echo home_url(); ?>" class="logo_link clearfix">				
+										<?php                    
+										$custom_logo_id = get_theme_mod('custom_logo');                    
+										$image = wp_get_attachment_image_src($custom_logo_id, 'full');                          
+										if (has_custom_logo()) {                    	
+											_e('<img src="' . $image[0] . '" class="img-fluid logo_img scroll-logo" alt="logo">');                    
+										} else {                    	
+											_e('<span class="site-name">' . esc_attr(get_bloginfo('name')) . '</span>');                    
+										}                 
+										?>
 								</a>
 							</div>
 							<nav>
@@ -99,86 +98,50 @@ $homePage = get_post(5);
 			</div>
 		</div><!--  End of header with navigation div  -->
 
-		<section class="banner-section">
-            <?php
-                $bannerpage = get_post(get_the_ID());
-                if (wp_get_attachment_url($bannerpage->banner_image) != false) {
-                    echo '<div class="banner-div" style="background:url('.wp_get_attachment_url($bannerpage->banner_image).') no-repeat">';
-                } else {
-                    echo '<div class="banner-div">';
-                }
-                ?>
-				<div class="center_title">
-					<?php echo apply_filters('the_content', ($bannerpage->banner_content)); ?>
-				</div>
-			</div>
-		</section><!--  end of banner  -->
-
-	</header>
-
-	<div class="middle-container">
-
-        <?php
-        if (is_front_page()) { ?>
-		<section class="top-title-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="center_title">
-							<h2><?php echo $homePage->below_banner_content; ?></h2>
+		<?php 
+			$bannerpage = get_post(get_the_ID());
+			if(is_front_page()) {
+				if ($bannerpage->banner_section_show == 'yes') { ?>									
+				<section class="main-banner-section pt-86">
+					<?php $bannerpage = get_post(get_the_ID()); ?>
+					<div class="main-banner-div">
+						<div class="video-banner-div">
+							<div class="embed-responsive embed-responsive-16by9">
+								<?php //echo $bannerpage->banner_iframe; ?>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-        </section><!-- end of top title -->
-
-        <section class="cremations-top-section">
-            <div class="cremations-top-div">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="center_title2">
-                                <?php echo apply_filters('the_content', ($homePage->header_section)); ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section><!-- end of cremations top -->
-        <?php
-        }
-        else {
-            $page = get_post(get_the_ID());
-			if (strlen($page->content) > 0) {
-            ?>
-			<section class="top-title-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="center_title">
-								<h2><?php echo $page->below_banner_content; ?></h2>
+						<div class="banner-content-div">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="center_title">
+											<?php echo apply_filters('the_content', ($bannerpage->banner_content)); ?>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section><!-- end of top title -->
-			<?php } ?>
-            <section class="breadcrumb-section">
-                <div class="breadcrumb-div">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="breadcrumb-row">
-                                    <?php
-                                        echo do_shortcode('[flexy_breadcrumb]');
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section><!-- end of top title -->
-
-        <?php } ?>
-
-
+				</section><!--  end of banner  -->
+				<?php } 
+				} else {	
+					if (wp_get_attachment_url($bannerpage->banner_image) != false) {
+						echo '<section class="inner-banner-section pt-86"  style="background:url('.wp_get_attachment_url($bannerpage->banner_image).') no-repeat">';
+					} else {
+						echo '<section class="inner-banner-section pt-86">';
+					}?>					
+						<div class="inner-banner-div join-producer-banner-cover">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="center_title">
+											<h1><?php the_title(); ?></h1>
+											<?php echo apply_filters('the_content', ($bannerpage->banner_content)); ?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section><!--  end of banner  -->
+				<?php } ?>
+	</header>

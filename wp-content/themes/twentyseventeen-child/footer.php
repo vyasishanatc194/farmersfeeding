@@ -11,47 +11,8 @@
  * @since 1.0
  * @version 1.2
  */
-$homePage = get_post(5);
 ?>
-<?php if ($homePage->footer_section_show == 'yes') { ?>
-		<section class="contact-box-section">
-			<div class="contact-box-div  clearfix">
-				<div class="col-50 left-div">
-					<div class="content-div">
-                        <?php echo apply_filters('the_content', ($homePage->footer_content)); ?>
-						<div class="content-details-div">
-							<div class="contact-row">
-								<a href="mailto:<?php echo get_option( 'email' );?>;" class="contact-link">
-									<span class="icon-span"><i class="flaticon-close-envelope email_icon custom_icon"></i> </span>
-									<span class="span-txt" id="contact_section_email"><?php echo get_option( 'email' );?></span>
-								</a>
-							</div>
-							<div class="contact-row">
-								<a href="tel:<?php echo get_option( 'phone_number' );?>;" class="contact-link">
-									<span class="icon-span"><i class="flaticon-call-answer tel_icon custom_icon"></i> </span>
-									<span class="span-txt" id="contact_section_phone"><?php echo get_option( 'phone_number' );?></span>
-								</a>
-							</div>
-						</div>
-						<div class="form-div">
-                            <?php //echo do_shortcode('[mailpoet_form id="2"]'); ?>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-50 right-div">
-                    <?php
-                        if (wp_get_attachment_url($homePage->footer_image) != false) {
-                            echo '<div class="imgthumb-div" style="background:url('.wp_get_attachment_url($homePage->footer_image).')"></div>';
-                        } else {
-                            echo '<div class="imgthumb-div"> </div>';
-                        }
-                    ?>
-				</div>
-			</div>
-		</section><!--  end of box righr img  -->
-	<?php } ?>
-		<section class="giving-section">
+		<section class="giving-section pt-50">
 			<div class="giving-div">
 				<div class="container">
 					<div class="row">
@@ -60,13 +21,13 @@ $homePage = get_post(5);
 								<h2><?php echo html_entity_decode(get_option( 'footer_content_1' ));  ?></h2>
 								<div class="giving-details-div">
 									<div class="contact-row">
-										<a href="mailto:<?php echo get_option( 'email' );?>;" class="contact-link">
+										<a href="mailto:<?php echo get_option( 'email' );?>" class="contact-link">
 											<span class="icon-span"><i class="flaticon-close-envelope email_icon custom_icon"></i> </span>
 											<span class="span-txt" id="footer_email"><?php echo get_option( 'email' );?></span>
 										</a>
 									</div>
 									<div class="contact-row">
-										<a href="tel:<?php echo get_option( 'phone_number' );?>;" class="contact-link">
+										<a href="tel:<?php echo get_option( 'phone_number' );?>" class="contact-link">
 											<span class="icon-span"><i class="flaticon-call-answer tel_icon custom_icon"></i> </span>
 											<span class="span-txt" id="footer_phone"><?php echo get_option( 'phone_number' );?></span>
 										</a>
@@ -107,12 +68,8 @@ $homePage = get_post(5);
 			</div>
 
 			<div class="bottom-row clearfix">
-				<div class="leftside-footer">
-					<p><?php echo html_entity_decode(get_option( 'footer_content_2' ));  ?></p>
-				</div>
-				<div class="rightside-footer">
+				<div class="leftside-footer">					
 					<p><?php echo get_option( 'copy_right_content' );?></p>
-					<p class="brave_thinking">Website by <a class="brave_thinking_a_tag" href="https://www.bravethinking.co.uk/" target="_blank"> Brave Thinking</a></p>
 				</div>
 			</div>
 
@@ -123,13 +80,18 @@ $homePage = get_post(5);
 
 <?php wp_footer(); ?>
 
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/js/jquery-3.3.1.slim.min.js" ></script>
+<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/jquery-3.3.1.slim.min.js" ></script>
 <!-- validation -->
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/js/popper.min.js" ></script>
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/js/bootstrap.min.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/js/waves.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/assets/js/custom.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/popper.min.js" ></script>
+<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/waves.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri('template_url'); ?>/js/custom.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<script>
+	jQuery('.footer-nav li a').addClass('footer-link');
+	jQuery('.footer-nav li').append('<span class="vertical-line">|</span>');
+	jQuery('.footer-nav li:last-child span').remove();
+</script>
 </body>
 </html>

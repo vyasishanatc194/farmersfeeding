@@ -13,6 +13,40 @@
  */
 $homePage = get_post(5);
 get_header(); ?>
+<div class="middle-container">
+    <?php if($homePage->below_banner_content !== '') { ?> 
+    <section class="top-title-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="center_title">
+                        <?php echo apply_filters('the_content', ($homePage->below_banner_content)); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- end of top title -->
+    <?php } ?>
+
+    <?php if ($homePage->campaign_section_show == 'yes') { ?>
+        <section class="cremations-top-section">
+			<div class="cremations-top-div">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="center_title2">
+								<h3><?php echo $homePage->campaign_title; ?></h3>
+								<div class="prag-content-div pb-30"><?php echo $homePage->campaign_content; ?></div>
+								<div class="btn-row">
+									<a href="<?php echo $homePage->campaign_button_link; ?>" class="btn btn-primary btn-readmore-big"><?php echo $homePage->campaign_button_text; ?></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section><!-- end of cremations top -->
+	<?php } ?>
 
     <?php if (have_rows('middle_multiple_section')) :
         $count = 1;
@@ -27,7 +61,7 @@ get_header(); ?>
         ?>
         <?php if ($homePage->middle_section_show == 'yes') { ?>
             <section class="<?php echo $class;?>-img-section">
-                <div class="<?php echo $class;?>-img-div  clearfix">
+                <div class="<?php echo $class;?>-img-div bg-hover-zoom1 clearfix">
                     <?php
                     if($class == 'boxleft')
                     {
@@ -78,24 +112,40 @@ get_header(); ?>
     endif;
     ?>
 
-    <?php if ($homePage->about_section_show == 'yes') { ?>
-        <section class="sae-section">
-            <?php
-                if (wp_get_attachment_url($homePage->about_us_image) != false) {
-                    echo '<div class="sae-div clearfix" style="background:url('.wp_get_attachment_url($homePage->about_us_image).')">';
-                } else {
-                    echo '<div class="sae-div clearfix">';
-                }
-            ?>
-
-                <div class="bluebox-div">
-                    <div class="content-div">
-                         <?php echo apply_filters('the_content', ($homePage->about_us_section)); ?>
-                    </div>
-                </div>
-
-            </div>
-        </section><!--  end of box img  -->
+    <?php if ($homePage->miracle_workers_section_show == 'yes') { ?>
+        <section class="utah-top-section partner-logo-section">
+			<div class="utah-top-div partner-logo-div">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="center_title2">
+								<h3><?php echo $homePage->miracle_workers_title; ?></h3>
+								<div class="image-thumb-row">
+									<div class="row justify-content-center">
+                                    <?php              
+                                        if (have_rows('miracle_workers_image_list')):      	
+                                        while (have_rows('miracle_workers_image_list')): the_row();  
+                                        $image = get_sub_field('miracle_workers_image');   		
+                                        ?> 
+                                            <div class="col-lg-4">
+                                                <div class="img-thumb">
+                                                    <img src="<?php echo $image['url']; ?>" class="img-fluid img-logo" alt="CBHLogo-Color-Stacked">
+                                                </div>
+                                            </div>                               
+                                        <?php     	
+                                        endwhile;        
+                                        else:        	
+                                        // no rows found        
+                                        endif;       
+                                    ?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
     <?php } ?>
 
 <?php

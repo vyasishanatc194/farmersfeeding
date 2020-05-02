@@ -2,27 +2,61 @@
 /**
  * Template Name: Contect Us Template
  */
-$homePageID = 5;
 $page = get_post(get_the_ID());
 get_header(); ?>
 
-<section class="heading-section">
-    <div class="heading-div">
+<section class="breadcrumb-section">
+    <div class="breadcrumb-div">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="center_title2 center_title3">
-                        <?php echo apply_filters('the_content', ($page->header_section)); 
-                          if ( have_posts() ) :
-                            while ( have_posts() ) : the_post();
-                            the_content();
-                            endwhile;
-                            endif;
+                    <div class="breadcrumb-row">
+                        <?php
+                            echo do_shortcode('[flexy_breadcrumb]');
                         ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section><!-- end of cremations top -->
+</section><!-- end of top title -->
+
+<?php if ($page->body_top_main_show == 'yes') { ?>
+    <section class="heading-section">
+        <div class="heading-div">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="center_title2">
+                            <?php if($page->body_top_main_title !== '') { ?>
+                                <h3><?php echo $page->body_top_main_title; ?></h3>
+                            <?php } ?>
+                            <div class="prag-content-div prag-content-div2">
+                                <?php echo $page->body_top_main_content; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php } ?>
+
+<?php if ($page->form_section_show == 'yes') { ?>
+    <section class="main-form-section donate-form-section">
+        <div class="main-form-div">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="common-form-div">  
+                                                      
+                            <?php echo do_shortcode($page->form_shortcode); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- end of cremations top -->
+<?php } ?>
+
 <?php get_footer(); ?>
