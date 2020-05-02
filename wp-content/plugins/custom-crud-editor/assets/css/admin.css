@@ -1,0 +1,26 @@
+.themepanel input.col-12-fields {
+    padding: 3px 8px;
+    font-size: 1.2em;
+    line-height: 100%;
+    height: 2em;
+    width: 100%;
+    outline: 0;
+    margin: 0 0 3px;
+    background-color: #fff;
+}
+
+.themepanel textarea.col-12-fields {
+    padding: 3px 8px;
+    font-size: 1.2em;
+    line-height: 100%;
+    height: 5em;
+    width: 100%;
+    outline: 0;
+    margin: 0 0 3px;
+    background-color: #fff;
+}
+
+.themepanel th {
+    font-size: 14px;
+    line-height: 29px;
+}

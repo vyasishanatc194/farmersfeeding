@@ -1,0 +1,82 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2019-12-20 12:28+0530\n"
+"PO-Revision-Date: 2019-12-20 12:29+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: gu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-KeywordsList: _;__;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: custom-crud.php:42 custom-crud.php:43
+msgid "Customs Records"
+msgstr "કસ્ટમ્સ રેકોર્ડ્સ"
+
+#: custom-crud.php:51
+msgid "Add New Custom Record"
+msgstr "નવી કસ્ટમ રેકોર્ડ ઉમેરો"
+
+#: custom-crud.php:52 custom-list.php:8
+msgid "Add New"
+msgstr "નવું ઉમેરો"
+
+#: custom-crud.php:59
+msgid "Update Custom Record"
+msgstr "કસ્ટમ રેકોર્ડ સુધારો કરો"
+
+#: custom-crud.php:60 custom-list.php:23
+msgid "Update"
+msgstr "સુધારો કરો"
+
+#: custom-list.php:15
+msgid "Custom Records List"
+msgstr "કસ્ટમ રેકોર્ડ્સ સૂચિ"
+
+#: custom-list.php:20
+msgid "ID"
+msgstr "આઈ.ડી."
+
+#: custom-list.php:21
+msgid "Name"
+msgstr "નામ"
+
+#: custom-list.php:22
+msgid "Shortcode"
+msgstr "શોર્ટકોડ"
+
+#: custom-list.php:24 custom-list.php:92
+msgid "Delete"
+msgstr "કાઢી નાંખવું"
+
+#: custom-list.php:39
+msgid "[custom_contact id="
+msgstr ""
+
+#: custom-list.php:91
+msgid "Edit"
+msgstr "ફેરફાર કરો"
+
+#: custom-list.php:111
+msgid "Custom Contacts"
+msgstr "કસ્ટમ્સ રેકોર્ડ્સ"
+
+#: custom-list.php:112
+msgid "Add new"
+msgstr "નવું ઉમેરો"
+
+#: custom-update.php:60 custom-update.php:63
+msgid "Back to Records list"
+msgstr "કસ્ટમ રેકોર્ડ્સ સૂચિ"
+
+#~ msgid "Data"
+#~ msgstr "ડેટા"
+
+#~ msgid "custom_records_list"
+#~ msgstr "કસ્ટમ_રિકાર્ડ્સ_લિસ્ટ"
