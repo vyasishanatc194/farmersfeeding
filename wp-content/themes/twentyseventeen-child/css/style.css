@@ -237,16 +237,16 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .btn.btn-primary.btn-readmore-big {
   padding: 12px 50px;
   border-radius: 0px;
-  background-color: #734C28;
-  border: 1px solid #734C28;
+  background-color: #73A31A;
+  border: 1px solid #73A31A;
   font-size: 23px;
   line-height: 34px;
   height: 60px;
 }
 
 .btn.btn-primary.btn-readmore-big:hover, .btn.btn-primary.btn-readmore-big:focus {
-  background-color: #E07B1F;
-  border: 1px solid #E07B1F;
+  background-color: #734C28;
+  border: 1px solid #734C28;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -254,16 +254,16 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .btn.btn-primary.btn-readmore {
   padding: 12px 40px;
   border-radius: 0px;
-  background-color: #734C28;
-  border: 1px solid #734C28;
+  background-color: #73A31A;
+  border: 1px solid #73A31A;
   font-size: 20px;
   line-height: 27px;
   height: 52px;
 }
 
-.btn.btn-primary.btn-readmore:hover, .btn.btn-primary.btn-readmore:focus {
-  background-color: #E07B1F;
-  border: 1px solid #E07B1F;
+.btn.btn-primary.btn-readmore:hover, .btn.btn-primary.btn-readmore:focusfocus {
+  background-color: #734C28;
+  border: 1px solid #734C28;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -282,6 +282,19 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   background-color: #fff;
   border: 1px solid #E07B1F;
   color: #E07B1F;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn.btn-primary.btn-primary2 {
+  background-color: #E07B1F;
+  border: 1px solid #E07B1F;
+  color: #fff;
+}
+
+.btn.btn-primary.btn-primary2:hover, .btn.btn-primary.btn-primary2:focus {
+  background-color: #734C28;
+  border: 1px solid #734C28;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -603,16 +616,41 @@ button::-moz-focus-inner, ::-moz-focus-inner {
       -ms-flex-align: center;
           align-items: center;
   height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .main-banner-section .main-banner-div .center_title h1 {
   padding: 0;
-  margin: 0;
+  margin: 0 0 15px 0;
   font-size: 42px;
   color: #fff;
   text-align: center;
   line-height: 60px;
   font-weight: 700;
+}
+
+.main-banner-section .main-banner-div .center_title h2 {
+  padding: 0;
+  margin: 0 auto 15px auto;
+  font-size: 28px;
+  color: #fff;
+  text-align: center;
+  line-height: 36px;
+  font-weight: 700;
+}
+
+.main-banner-section .main-banner-div .center_title p {
+  padding: 0;
+  margin: 0 auto 15px auto;
+  max-width: 600px;
+  font-size: 18px;
+  color: white;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 400;
 }
 
 .main-banner-section .main-banner-div .video-banner-div {
@@ -659,14 +697,15 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 /* End of banner section */
 /* top title section */
 .top-title-section {
-  padding: 0;
+  padding: 20px 0;
   margin: 0;
   position: relative;
-  background-color: #73A31A;
+  background-color: #674b30;
 }
 
 .top-title-section .center_title {
   width: 100%;
+  max-width: 700px;
   padding: 10px 0;
   margin: 0 auto;
   text-align: center;
@@ -693,26 +732,26 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 }
 
 /* End of top title section */
-/*  cremations top  */
-.cremations-top-section {
+/*  utah top  */
+.utah-top-section {
   padding: 0;
   margin: 0;
   position: relative;
 }
 
-.cremations-top-section .cremations-top-div {
+.utah-top-section .utah-top-div {
   padding: 55px 0 45px 0;
   margin: 0;
 }
 
-.cremations-top-section .cremations-top-div .center_title2 {
+.utah-top-section .utah-top-div .center_title2 {
   width: 100%;
   padding: 10px 0 0 0;
   margin: 0 auto;
   text-align: center;
 }
 
-.cremations-top-section .cremations-top-div .center_title2 h3 {
+.utah-top-section .utah-top-div .center_title2 h3 {
   padding: 0;
   margin: 0 0 15px 0;
   font-size: 32px;
@@ -722,7 +761,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   font-weight: 600;
 }
 
-.cremations-top-section .cremations-top-div .center_title2 p {
+.utah-top-section .utah-top-div .center_title2 p {
   padding: 0;
   margin: 0;
   font-size: 18px;
@@ -732,13 +771,63 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   font-weight: 400;
 }
 
-.cremations-top-section .cremations-top-div .prag-content-div {
+.utah-top-section .utah-top-div .prag-content-div {
   padding: 0;
-  margin: 0 0 15px 0;
+  margin: 0 auto 15px auto;
   min-height: 85px;
+  max-width: 700px;
 }
 
-/* end of cremations top  */
+.partner-logo-section {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.partner-logo-section .partner-logo-div {
+  padding: 65px 0 65px 0;
+  margin: 0;
+}
+
+.partner-logo-section .partner-logo-div .img-thumb {
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.partner-logo-section .partner-logo-div .img-fluid.img-logo {
+  height: 85px;
+  width: 210px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.partner-logo-section .partner-logo-div .image-thumb-row {
+  padding: 15px 0 20px 0;
+}
+
+.partner-logo-section .center-img-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* end of utah top  */
 /*  box left */
 .boxleft-img-section {
   padding: 0;
@@ -1156,7 +1245,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .giving-section .giving-div {
   padding: 0;
   margin: 0;
-  background-color: #73A31A;
+  background-color: #674b30;
 }
 
 .giving-section .center_title {
@@ -1279,11 +1368,15 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 
 .footer-row .left-link-row .footer-nav li .footer-link {
   color: #666666;
-  line-height: 41px;
+  line-height: 40px;
   padding: 0 18px;
   margin: 0;
-  font-size: 22px;
+  font-size: 20px;
   display: inline-block;
+}
+
+.footer-row .left-link-row .footer-nav li .footer-link:hover {
+  color: #E07B1F;
 }
 
 .footer-row .left-link-row .footer-nav li:first-child .footer-link {
@@ -1292,10 +1385,10 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 
 .footer-row .left-link-row .footer-nav .vertical-line {
   color: #666666;
-  line-height: 41px;
+  line-height: 40px;
   padding: 0 0px;
   margin: 0;
-  font-size: 22px;
+  font-size: 20px;
   display: inline-block;
 }
 
@@ -1344,7 +1437,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .footer-row .bottom-row .leftside-footer {
   padding: 0;
   margin: 0;
-  width: 75%;
+  width: 40%;
   float: left;
 }
 
@@ -1363,7 +1456,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .footer-row .bottom-row .rightside-footer {
   padding: 0;
   margin: 0;
-  width: 25%;
+  width: 60%;
   float: left;
 }
 
@@ -1386,6 +1479,33 @@ button::-moz-focus-inner, ::-moz-focus-inner {
           align-items: flex-end;
 }
 
+.footer-row .bottom-row .d-flex.sponsored-logo-img-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer-row .bottom-row .leftside-footer p {
+  padding: 0 20px 0 20px;
+  margin: 0 0 0px 0;
+  font-size: 16px;
+  color: #222;
+  text-align: center;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+.footer-row .bottom-row .img-fluid.img-farm-bureau {
+  width: 100px;
+}
+
 /* end of footer  */
 /******* Inner Page CSS *********/
 /* breadcrumb section */
@@ -1398,7 +1518,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .breadcrumb-section .breadcrumb-div {
   padding: 0;
   margin: 0;
-  background-color: #73A31A;
+  background-color: #674b30;
 }
 
 .breadcrumb-div .breadcrumb-row {
@@ -1452,21 +1572,32 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   width: 100%;
   padding: 10px 0 0 0;
   margin: 0 auto;
+  max-width: 850px;
   text-align: center;
 }
 
 .heading-section .heading-div .center_title2 h3 {
   padding: 0;
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 0;
   font-size: 36px;
   color: #734C28;
-  line-height: 49px;
+  line-height: 42px;
+  font-weight: 700;
+}
+
+.heading-section .heading-div .center_title2 h4 {
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: #000000;
+  line-height: 36px;
   font-weight: 700;
 }
 
 .heading-section .heading-div .center_title2 p {
   padding: 0;
-  margin: 0 0 15px 0;
+  margin: 0 auto 10px auto;
+  max-width: 600px;
   font-size: 18px;
   color: #222;
   text-align: center;
@@ -1477,11 +1608,23 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 .heading-section .heading-div .prag-content-div {
   padding: 0;
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 700px;
 }
 
 .heading-section .heading-div .prag-content-div.prag-content-div2 {
   max-width: 1200px;
+}
+
+.heading-section .heading-div .prag-content-div.prag-content-div3 {
+  max-width: 1200px;
+}
+
+.heading-section .heading-div .center_title2 .prag-content-div3 p {
+  max-width: 1200px;
+}
+
+.max-width-100 {
+  max-width: 100% !important;
 }
 
 .heading-section .heading-div2 {
@@ -2004,16 +2147,35 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 }
 
 .common-form-div .heading {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .common-form-div .heading h3 {
   font-size: 20px;
+  margin: 0 0 10px 0;
   color: #000000;
   letter-spacing: 0;
   text-align: left;
   font-weight: 600;
   line-height: 30px;
+}
+
+.common-form-div .heading p {
+  padding: 0;
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  color: #222;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.common-form-div .heading ul li {
+  padding: 0;
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #222;
+  line-height: 28px;
+  font-weight: 400;
 }
 
 .common-form-div .total-span {
@@ -2119,8 +2281,8 @@ button::-moz-focus-inner, ::-moz-focus-inner {
 }
 
 .common-form-div .format-radio {
-  padding: 5px 15px;
-  margin: 0;
+  padding: 10px 15px;
+  margin: 0 0 10px 0;
   min-width: 92px;
   border-radius: 0px;
   background-color: #fff;
@@ -2162,12 +2324,115 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   line-height: 28px;
 }
 
+.common-form-div .format-radio .title-div span.font-weight-bold {
+  padding: 4px 15px;
+  background-color: #E07B1F;
+  margin: 0px 0px 0px 10px;
+  border-radius: 8px;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
 .common-form-div .format-radio.active {
-  background-color: #eee;
+  background-color: #73a319;
+  color: #fff;
+  border-color: #73a319;
+}
+
+.common-form-div .format-radio.active .title-div span.font-weight-bold {
+  background-color: #86b135;
+  color: #ffffff;
+}
+
+.common-form-div .custom-control {
+  cursor: pointer;
+}
+
+.common-form-div .custom-control label.custom-control-label {
+  cursor: pointer;
+}
+
+.table-div {
+  padding: 10px 0 10px 0;
+  margin: 0;
+  position: relative;
+}
+
+.table-div h3 {
+  font-size: 18px;
+  margin: 0px 0 10px 0;
+  color: #000000;
+  letter-spacing: 0;
+  text-align: left;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.table-div .table thead th {
+  min-width: 100px;
+  font-weight: 500;
+  line-height: 20px;
+  border-bottom: 1px solid #dee2e6 !important;
+  background-color: #fafafa;
+  font-size: 15px;
+}
+
+.table-div .table td {
+  min-width: 100px;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 /* step */
+.step-forms-section.step-forms-section2 .step-forms-nav-tab ul {
+  width: 60%;
+  margin: 0 auto 20px auto;
+}
+
+.step-forms-section.step-forms-section2 .step-forms-nav-tab ul li {
+  width: 50%;
+}
+
+.step-forms-section.step-forms-section2 .step-forms-nav-tab ul:after {
+  width: 50%;
+  left: 25%;
+}
+
+.step-forms-section.step-forms-section2 .step-forms-nav-tab ul li:last-child.done:before {
+  display: none;
+}
+
 /* End of step */
+@media (min-width: 1025px) {
+  .header-div .ullist-inline {
+    min-height: 86px;
+  }
+  .header-div .ullist-inline li {
+    position: relative;
+    height: 100%;
+  }
+  .header-div .ullist-inline li .nav-link {
+    padding-top: 7px;
+    min-height: 86px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .header-div .ullist-inline li.active:after {
+    content: "";
+    height: 2px;
+    border-radius: 24px;
+    width: 100%;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    background-color: #E07B1F;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .middle-container {
     width: 100%;
@@ -2201,7 +2466,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     z-index: 9999;
   }
   .nav-m-bar .menu-bars {
-    background: url(../images/icon/menubar2.png) no-repeat;
+    background: url(../images/icon/menubar.svg) no-repeat;
     width: 21px;
     height: 23px;
     display: inline-block;
@@ -2356,6 +2621,10 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   .main-banner-section .main-banner-div .center_title h1 {
     font-size: 24px;
     line-height: 38px;
+  }
+  .main-banner-section .main-banner-div .center_title h2 {
+    font-size: 21px;
+    line-height: 32px;
   }
   .inner-banner-section h1 {
     font-size: 24px;
@@ -2712,6 +2981,39 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   }
   /* faq-section */
   /* end of faq-section */
+  .common-form-div .dollar-group span.input-group-text {
+    font-size: 17px;
+  }
+  .table-div .table thead th.width-td-150 {
+    min-width: 170px;
+  }
+  .utah-top-section .utah-top-div .center_title2 h3 {
+    font-size: 28px;
+    line-height: 42px;
+  }
+  .partner-logo-section .partner-logo-div .image-thumb-row {
+    padding: 0px 0 0 0;
+  }
+  .footer-row .bottom-row .d-flex.sponsored-logo-img-block {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .footer-row .bottom-row .leftside-footer p {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+  }
+  .footer-row .bottom-row .rightside-footer p {
+    padding: 0;
+    margin: 20px 0 0px 0;
+    font-size: 12px;
+    line-height: 26px;
+  }
   /******* end of Inner Page CSS *********/
 }
 
@@ -2748,15 +3050,11 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     z-index: 9999;
   }
   .nav-m-bar .menu-bars {
-    background: url(../images/icon/menubar2.png) no-repeat;
+    background: url(../images/icon/menubar.svg) no-repeat;
     width: 21px;
     height: 23px;
     display: inline-block;
     vertical-align: middle;
-  }
-  .header-div .logo-div {
-    width: 30%;
-    padding: 0;
   }
   .header-div {
     min-height: 75px;
@@ -2777,7 +3075,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     z-index: 9999999;
     top: 0;
     right: 0;
-    background-color: #fff;
+    background-color: #734C28;
     overflow-x: hidden;
     padding-top: 70px;
     -webkit-transition: 0.5s;
@@ -2820,7 +3118,7 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     min-height: 100%;
   }
   .header-div .width80 {
-    width: 40%;
+    width: 350px;
   }
   .header-div .opacityon {
     opacity: 1;
@@ -2838,15 +3136,18 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   .header-div .banner-div .carousel-indicators li {
     height: 2px;
   }
-  .header-div .ullist-inline li.active .nav-link {
-    color: #734C28;
-    display: inline-block;
-    border-color: transparent;
-  }
   .header-div .ullist-inline li .nav-link {
-    color: #222;
+    color: #fff;
     font-weight: 500;
     font-size: 16px;
+  }
+  .header-div .ullist-inline li.active {
+    background-color: #966232;
+  }
+  .header-div .ullist-inline li.active .nav-link {
+    color: #fff;
+    display: inline-block;
+    border-color: transparent;
   }
   .header-div .nav-div ul li .social-ul > li {
     padding: 0px 0px;
@@ -2854,8 +3155,8 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     width: auto;
   }
   .header-div .nav-div ul li .social-ul > li a {
-    color: #fff;
-    background-color: #734C28;
+    color: #734C28;
+    background-color: #ffffff;
   }
   .header-div .ullist-inline {
     margin: 0 0px 0 0;
@@ -2867,6 +3168,9 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     line-height: 35px;
     font-size: 18px;
   }
+  .fixed_top.header-div .ullist-inline li .nav-link {
+    color: #ffffff;
+  }
   .fixed_top {
     -webkit-transform: none;
             transform: none;
@@ -2877,10 +3181,17 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     -webkit-transform: none;
             transform: none;
   }
+  .header-div .social-icon-div {
+    position: absolute;
+    bottom: 20px;
+  }
   /* End of navigation */
   /* banner & top title */
   /* End of banner */
   .main-banner-section.pt-86 {
+    padding-top: 75px !important;
+  }
+  .inner-banner-section.pt-86 {
     padding-top: 75px !important;
   }
   .main-banner-section .main-banner-div {
@@ -3168,6 +3479,33 @@ button::-moz-focus-inner, ::-moz-focus-inner {
     max-width: 100%;
   }
   /******* end of Inner Page CSS *********/
+  .table-div .table thead th.width-td-150 {
+    min-width: 170px;
+  }
+  .footer-row .bottom-row .leftside-footer {
+    width: 50%;
+  }
+  .footer-row .bottom-row .rightside-footer {
+    width: 50%;
+  }
+  .footer-row .bottom-row .leftside-footer p {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0 0 5px 0;
+  }
+  .footer-row .bottom-row .rightside-footer p {
+    padding: 0;
+    text-align: right;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin: 20px 0 0px 0;
+    font-size: 12px;
+    line-height: 26px;
+  }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1450px) {
@@ -3184,9 +3522,6 @@ button::-moz-focus-inner, ::-moz-focus-inner {
   }
   .footer-row .bottom-row {
     max-width: 1200px;
-  }
-  .footer-row .bottom-row .rightside-footer p {
-    min-height: 100px;
   }
 }
 

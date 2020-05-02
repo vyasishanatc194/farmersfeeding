@@ -12,7 +12,7 @@
  * @version 1.2
  */
 ?>
-		<section class="giving-section pt-50">
+		<section class="giving-section ">
 			<div class="giving-div">
 				<div class="container">
 					<div class="row">
@@ -67,10 +67,16 @@
 
 			</div>
 
-			<div class="bottom-row clearfix">
-				<div class="leftside-footer">					
+			<div class="bottom-row align-item-center clearfix">
+				<div class="leftside-footer">
+					<div class="d-flex sponsored-logo-img-block">
+						<p><?php echo get_option( 'brought_text' ); ?></p>
+						<span class="img-span"><a href="#" class="link-sponsored"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/Farm-Bureau-logo.png" class="img-fluid img-farm-bureau" alt="Farm-Bureau"></a></span>
+					</div>
+				</div>			
+				<div class="rightside-footer">
 					<p><?php echo get_option( 'copy_right_content' );?></p>
-				</div>
+				</div>					
 			</div>
 
 		</div>

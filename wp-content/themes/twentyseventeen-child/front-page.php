@@ -29,8 +29,8 @@ get_header(); ?>
     <?php } ?>
 
     <?php if ($homePage->campaign_section_show == 'yes') { ?>
-        <section class="cremations-top-section">
-			<div class="cremations-top-div">
+        <section class="utah-top-section">
+			<div class="utah-top-div">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
@@ -52,32 +52,32 @@ get_header(); ?>
         $count = 1;
         while (have_rows('middle_multiple_section')) : the_row();
         $class = (($count % 2) == 0) ? 'boxright' : 'boxleft' ;
-
+        $pt = ($count == 1) ? 'pt-50' : '' ;
         $count++;
         $title = get_sub_field('title');
         $buttonLink = get_sub_field('button_link');
+        $buttonText = get_sub_field('button_text');
         $image = get_sub_field('image');        
         $description = get_sub_field('description');
         ?>
         <?php if ($homePage->middle_section_show == 'yes') { ?>
-            <section class="<?php echo $class;?>-img-section">
+                <section class="<?php echo $class;?>-img-section <?php echo $pt;?>">
                 <div class="<?php echo $class;?>-img-div bg-hover-zoom1 clearfix">
                     <?php
                     if($class == 'boxleft')
                     {
                         ?>
-                        <div class="col-50 right-div">
-                            <div class="imgthumb-div lower-cost-div" style="background:url('<?php echo $image['url'];?>')">
-
+                        <div class="col-50 left-div">
+                            <div class="imgthumb-div campaign-banner-img" style="background:url('<?php echo $image['url'];?>'); background-size: cover;">
                             </div>
                         </div>
 
-                        <div class="col-50 left-div">
+                        <div class="col-50 right-div">
                             <div class="content-div">
                                 <h3><?php echo $title;?></h3>
                                 <div class="prag-content-div"><p><?php echo $description;?> </p></div>
                                 <div class="btn-row">
-                                    <a href="<?php echo ($buttonLink == '') ? '#' : $buttonLink;?>" class="btn btn-primary btn-readmore">Read more</a>
+                                    <a href="<?php echo ($buttonLink == '') ? '#' : $buttonLink;?>" class="btn btn-primary btn-primary2  btn-readmore"><?php echo $buttonText;?></a>
                                 </div>
                             </div>
                         </div>
@@ -90,13 +90,13 @@ get_header(); ?>
                                 <h3><?php echo $title; ?></h3>
                                 <div class="prag-content-div"><p><?php echo $description; ?> </p></div>
                                 <div class="btn-row">
-                                    <a href="<?php echo ($buttonLink == '') ? '#' : $buttonLink; ?>" class="btn btn-primary btn-readmore">Read more</a>
+                                    <a href="<?php echo ($buttonLink == '') ? '#' : $buttonLink; ?>" class="btn btn-primary btn-primary2  btn-readmore"><?php echo $buttonText;?></a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-50 right-div">
-                            <div class="imgthumb-div lower-cost-div" style="background:url('<?php echo $image['url']; ?>')">
+                            <div class="imgthumb-div campaign-banner-img" style="background:url('<?php echo $image['url']; ?>'); background-size: cover;">
 
                             </div>
                         </div>

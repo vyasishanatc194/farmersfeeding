@@ -27,3 +27,9 @@ ul.dropdown-menu.show li a.dropdown-item {
 .page-id-189 h1.entry-title {
     display: none;
 }
+.fbc-page .fbc-wrap .fbc-items li {
+    padding: 0 10px;
+}
+.fbc-page .fbc-wrap .fbc-items li a{
+    font-weight: 100;
+}
